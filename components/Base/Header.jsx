@@ -1,23 +1,21 @@
 "use client";
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { HiShoppingCart } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
 import { useRef, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import { FaHome } from "react-icons/fa";
-import gsap from "gsap";
 import { useTranslation } from "react-i18next";
+import gsap from "gsap";
 import LangBtn from "./LangBtn";
 import { FaPhoneAlt } from "react-icons/fa";
 import { AiFillProduct } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { FaListAlt } from "react-icons/fa";
-import { FaCamera } from "react-icons/fa";
-import i18next from "i18next";
 
 const Header = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("header");
   const menuRef = useRef(null);
   const navRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -99,7 +97,7 @@ const Header = () => {
               className={`nav gradient text-gray-50 capitalize flex absolute top-[2.35rem] sm:top-[3.35rem] left-0 p-6 sm:p-8 md:p-10 w-[85vw] sm:w-[60vw] md:w-[50vw] lg:w-[30vw] items-center flex-col gap-8 sm:gap-10 h-[calc(100vh-2.5rem)] sm:h-[90vh] opacity-0 z-50 rounded-2xl`}
             >
               <Link
-                to="/"
+                href={"/"}
                 onClick={() => setIsOpen(false)}
                 className="link nav-link opacity-0 text-xl sm:text-2xl"
               >
@@ -107,7 +105,7 @@ const Header = () => {
                 <span>{t("homelink")}</span>
               </Link>
               <Link
-                to="/products"
+                href="/products"
                 onClick={() => setIsOpen(false)}
                 className="link nav-link opacity-0 text-xl sm:text-2xl"
               >
@@ -115,7 +113,7 @@ const Header = () => {
                 <span>{t("productlink")}</span>
               </Link>
               <Link
-                to="/about"
+                href="/about"
                 onClick={() => setIsOpen(false)}
                 className="link nav-link opacity-0 text-xl sm:text-2xl"
               >
@@ -123,7 +121,7 @@ const Header = () => {
                 <span>{t("aboutlink")}</span>
               </Link>
               <Link
-                to="/contact"
+                href="/contact"
                 onClick={() => setIsOpen(false)}
                 className="link nav-link opacity-0 text-xl sm:text-2xl"
               >
@@ -131,7 +129,7 @@ const Header = () => {
                 <span>{t("contactlink")}</span>
               </Link>
               <Link
-                to="/orders"
+                href="/order"
                 onClick={() => setIsOpen(false)}
                 className="link nav-link opacity-0 text-xl sm:text-2xl"
               >
@@ -143,7 +141,7 @@ const Header = () => {
           <div className="logo">
             <h1>
               <Link
-                to="/"
+                href="/"
                 className="PM text-2xl sm:text-3xl md:text-4xl lg:text-5xl flex justify-center items-center space-x-1 sm:space-x-2"
               >
                 <img

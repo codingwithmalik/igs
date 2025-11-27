@@ -2,21 +2,21 @@
 import i18next from "i18next";
 import React from "react";
 import { useEffect, useState } from "react";
-import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap/gsap-core";
-
+import { gsap } from "gsap";
+import { useTranslation } from "react-i18next";
 const LangBtn = () => {
+  const {i18n} = useTranslation()
   const togglelanguage = () => {
-    const language = i18next.language === "en" ? "ur" : "en";
-    i18next.changeLanguage(language);
+    const language = i18n.language === "en" ? "ur" : "en";
+    i18next.changeLanguage(language);    
   };
   useEffect(() => {
-    document.body.dir = i18next.dir();
-  }, [i18next, i18next.language]);
+    document.body.dir = i18n.dir()
+  }, [i18n.language]);
   const [show, setShow] = useState(false);
   const toggleshow = () => {
     setTimeout(() => {
-      setShow((prev)=> !prev)
+      setShow((prev) => !prev);
     }, 2000);
   };
   const triggeranimtion = () => {
@@ -25,7 +25,7 @@ const LangBtn = () => {
       gsap.to(".animation", {
         x: "100vw",
         duration: 2,
-        ease:"sine"
+        ease: "sine",
       });
     } else {
       gsap.to(".animation", {

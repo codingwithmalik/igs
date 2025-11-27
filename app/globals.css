@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "Poppins";
+  color: white;
+  background: #171d1e;
+}
+
+.font-marker {
+  font-family: "Permanent Marker", "Poppins", cursive;
+}
+.PM {
+  font-family: "Permanent Marker", "Poppins", cursive;
+}
+.glass-bg {
+  background: rgba(54, 54, 54, 0.51);
+  backdrop-filter: blur(250px);
+  -webkit-backdrop-filter: blur(25px);
+}
+.gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(32, 41, 42, 1) 30%,
+    rgba(70, 135, 89, 1) 100%
+  );
+}
+
+/* Nav link hover effects */
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  position: relative;
+}
+
+.nav-link:hover {
+  transform: scale(1.05) translateX(0.5rem);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(70, 135, 89, 0.3);
+}
+
+.nav-link svg {
+  transition: all 0.3s ease-out;
+}
+
+.nav-link:hover svg {
+  transform: scale(1.25) rotate(6deg);
+  color: #171d1e;
+  filter: drop-shadow(0 0 8px rgba(70, 135, 89, 0.6));
+}
+
+.nav-link span {
+  transition: all 0.3s ease-out;
+}
+
+.nav-link:hover span {
+  transform: translateX(0.25rem);
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 10px rgba(25, 36, 28, 0.5);
 }

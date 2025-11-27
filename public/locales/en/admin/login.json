@@ -1,0 +1,10 @@
+{
+  "tagline": "Admin Portal",
+  "title": "Sign in to continue",
+  "description": "Use your admin credentials to manage products and orders securely.",
+  "emailLabel": "Email address",
+  "emailPlaceholder": "you@igs.com",
+  "passwordLabel": "Password",
+  "passwordPlaceholder": "Enter your password",
+  "submit": "Sign in"
+}

@@ -1,14 +1,20 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import React from "react";
+import { Poppins, Permanent_Marker } from "next/font/google";
+import Header from "../components/Base/Header.jsx";
+import "../i18n.js";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import LanguageContext from "@/contexts/LanguageContext.jsx";
+import Footer from "@/components/Base/Footer.jsx";
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const permanentMarker = Permanent_Marker({
+  variable: "--font-permanent-marker",
   subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata = {
@@ -20,9 +26,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} ${permanentMarker.variable} antialiased`}
       >
-        {children}
+        <React.Suspense fallback="loading...">
+          <LanguageContext>
+            <Header />
+            {children}
+            <Footer/>
+          </LanguageContext>
+        </React.Suspense>
       </body>
     </html>
   );

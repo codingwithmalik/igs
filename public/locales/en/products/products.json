@@ -1,0 +1,25 @@
+{
+  "categories": {
+    "beverages": "Drinks & Beverages",
+    "snacksChips": "Snacks & Chips",
+    "sweetsCandies": "Sweets & Candies",
+    "riceGrains": "Rice & Grains",
+    "spicesSeasonings": "Spices & Seasonings",
+    "cookingOil": "Cooking Oil",
+    "cannedFoods": "Canned Foods",
+    "pastaNoodles": "Pasta & Noodles",
+    "teaCoffee": "Tea & Coffee",
+    "sugarSweeteners": "Sugar & Sweeteners",
+    "personalCare": "Personal Care",
+    "householdCleaning": "Household Cleaning",
+    "laundryDetergents": "Laundry Detergents",
+    "paperProducts": "Paper Products",
+    "babyCare": "Baby Care",
+    "healthWellness": "Health & Wellness",
+    "frozenFoods": "Frozen Foods",
+    "condimentsSauces": "Condiments & Sauces",
+    "breakfastCereals": "Breakfast Cereals",
+    "dryFruitsNuts": "Dry Fruits & Nuts"
+  }
+}
+
