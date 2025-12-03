@@ -2,10 +2,12 @@
 import React from "react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const AdminLoginPage = () => {
   const { t } = useTranslation("admin/login");
+  const [error, setError] = useState("");
   const [form, setform] = useState({
     email: "",
     password: "",
@@ -14,21 +16,32 @@ const AdminLoginPage = () => {
   const handleChange = (e) => {
     setform({ ...form, [e.target.name]: e.target.value });
   };
+  const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission logic here
-    const result = await signIn("credentials", {
-      redirect: false,
-      email: form.email,
-      password: form.password,
-      callbackUrl: "/admin",
-    });
-    alert(result);
-    if (result?.ok) {
-      window.location.href = "/admin"; // redirect after successful login
-    } else {
-      alert(result?.error);
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        toast.success("Login successful: " + data.message);
+        // Redirect to admin dashboard or perform other actions
+        window.location.href = "/admin";
+      } else {
+        let error = data.message || "Wrong credentials";
+        setError(error);
+        toast.error("Login failed: " + error);
+      }
+    } catch (error) {
+      toast.error("Error during login: " + error.message);
     }
+    setform({ email: "", password: "" });
   };
   return (
     <section className="md:min-h-[calc(100vh-64px)] min-h-[calc(90vh-64px)] flex items-center justify-center px-4 py-12 gradient">
@@ -79,7 +92,10 @@ const AdminLoginPage = () => {
               className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/40 transition"
             />
           </div>
-
+          <div className="error">
+            {/* Display error messages here if needed */}
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+          </div>
           <button
             type="submit"
             className="w-full rounded-xl bg-green-400/90 px-4 py-3 font-semibold text-emerald-950 transition hover:bg-green-300 focus:outline-none focus:ring-2 focus:ring-emerald-400/80"
