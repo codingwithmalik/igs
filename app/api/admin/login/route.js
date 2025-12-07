@@ -13,6 +13,7 @@ export async function POST(request) {
 
     if (!admin) {
       return NextResponse.json({
+        success: false,
         message: "Invalid email or password",
         status: 401,
       });
@@ -20,6 +21,7 @@ export async function POST(request) {
     const isPasswordValid = await bcrypt.compare(password, admin.password);
     if (!isPasswordValid) {
       return NextResponse.json({
+        success: false,
         message: "Invalid email or password",
         status: 401,
       });
@@ -28,16 +30,21 @@ export async function POST(request) {
       { id: admin._id, email: admin.email },
       process.env.JWT_SECRET,
       {
-        expiresIn: "7d",
+        expiresIn: "3d",
       }
     );
-    const res = NextResponse.json({ message: "Login successful", status: 200 });
+    const res = NextResponse.json({
+      success: true,
+      message: "Redirecting...",
+      status: 200,
+    });
     res.cookies.set("adminToken", token, {
       httpOnly: true,
-      secure: true,
+      // change the secure to true in production
+      secure: false,
       path: "/",
       sameSite: "lax",
-      maxAge: 7 * 24 * 60 * 60,
+      maxAge: 3 * 24 * 60 * 60,
     });
     return res;
   } catch (error) {

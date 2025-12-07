@@ -15,38 +15,73 @@ const Products = () => {
     // filter products here
   };
   useEffect(() => {
-    gsap.set(CategoriesRef.current, { height: 0, opacity: 0 });
+    if (CategoriesRef.current) {
+      gsap.set(CategoriesRef.current, { height: 0, opacity: 0, overflow: "hidden" });
+    }
   }, []);
+  
   const handleCategoryClick = () => {
     const NewIsOpen = !isOpen;
     setIsOpen(NewIsOpen);
+    
+    if (!CategoriesRef.current) return;
+    
     if (NewIsOpen) {
-      gsap.fromTo(
-        CategoriesRef.current,
-        {
-          height: 0,
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          height: 200,
-          ease: "bounce.out",
+      // Get the natural height of the content
+      gsap.set(CategoriesRef.current, { height: "auto" });
+      const height = CategoriesRef.current.offsetHeight;
+      gsap.set(CategoriesRef.current, { height: 0 });
+      
+      // Set initial state for buttons before animating
+      // const buttons = CategoriesRef.current.querySelectorAll("button");
+      gsap.set(".category-button", { opacity: 0, y: -20, scale: 0.9 });
+      
+      // Animate opening with smooth easing
+      gsap.to(CategoriesRef.current, {
+        height: height,
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.out",
+        onComplete: () => {
+          gsap.set(CategoriesRef.current, { height: "auto" });
         }
-      );
+      });
+      
+      // Stagger animation for category buttons with bounce effect
+      gsap.to(".category-button", {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.5,
+        stagger: 0.06,
+        ease: "back.out(1.4)",
+        delay: 0.15,
+      });
     } else {
-      gsap.fromTo(
-        CategoriesRef.current,
-        {
-          height: 100,
-          opacity: 1,
-        },
-        {
-          opacity: 0,
-          height: 0,
-        }
-      );
+      // Get current height before closing
+      const height = CategoriesRef.current.offsetHeight;
+      gsap.set(CategoriesRef.current, { height: height });
+      
+      // Fade out buttons first
+      const buttons = CategoriesRef.current.querySelectorAll("button");
+      gsap.to(buttons, {
+        opacity: 0,
+        y: -10,
+        scale: 0.95,
+        duration: 0.2,
+        stagger: 0.02,
+        ease: "power2.in",
+      });
+      
+      // Then animate closing container
+      gsap.to(CategoriesRef.current, {
+        height: 0,
+        opacity: 0,
+        duration: 0.35,
+        ease: "power2.in",
+        delay: 0.1,
+      });
     }
-    // open category menu here
   };
 
   const handleCategorySelect = (category) => {
@@ -70,7 +105,7 @@ const Products = () => {
           </div>
           <div
             ref={CategoriesRef}
-            className={`categories-container bg-linear-to-b from-[#171d1e] to-[#1a2324] py-6 px-4 border-b border-[#468759]/20 `}
+            className="categories-container bg-linear-to-b from-[#171d1e] to-[#1a2324] py-6 px-4 border-b border-[#468759]/20 overflow-hidden"
           >
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-10 gap-3">
@@ -78,7 +113,7 @@ const Products = () => {
                   <button
                     key={index}
                     onClick={() => handleCategorySelect(category)}
-                    className={`group relative px-4 py-3 rounded-xl font-medium text-sm md:text-base transition-all duration-300 shadow-md overflow-hidden ${
+                    className={`category-button group relative px-4 py-3 rounded-xl font-medium text-sm md:text-base transition-all duration-300 shadow-md overflow-hidden ${
                       activeCategory === category
                         ? "bg-[#2ecb5d] text-[#171d1e] hover:bg-[#0dd045] shadow-lg shadow-[#2ecb5d]/30 scale-105"
                         : "bg-[#2a3334] text-gray-200 hover:bg-[#3a4546] hover:text-white border border-[#468759]/20 hover:border-[#468759]/50 hover:shadow-lg hover:shadow-[#468759]/20"

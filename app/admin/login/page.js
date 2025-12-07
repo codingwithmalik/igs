@@ -29,7 +29,9 @@ const AdminLoginPage = () => {
         body: JSON.stringify(form),
       });
       const data = await res.json();
-      if (res.ok) {
+      console.log(data);
+
+      if (data.success) {
         toast.success("Login successful: " + data.message);
         // Redirect to admin dashboard or perform other actions
         window.location.href = "/admin";
