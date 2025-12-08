@@ -26,6 +26,7 @@ i18next
       "products/searcher",
       "products/products",
       "admin/login",
+      "admin/home",
     ], // all pages
     defaultNS: "home",
   });

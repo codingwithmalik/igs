@@ -15,9 +15,13 @@ import {
   Settings,
   Bell,
   Menu,
+  Inbox,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import Image from "next/image";
 
 export default function AdminDashboard() {
+  const { t , i18n } = useTranslation("admin/home");
   const [activeTab, setActiveTab] = useState("dashboard");
   const [showProductModal, setShowProductModal] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
@@ -25,36 +29,144 @@ export default function AdminDashboard() {
   const [products, setProducts] = useState([
     {
       id: 1,
-      name: "Wireless Headphones",
-      price: 89.99,
-      description: "High-quality wireless headphones with noise cancellation.",
-      category: "Electronics",
-      brand: "Generic",
+      name: { en: "Basmati Rice", ur: "باسمتی چاول" },
+      price: 200,
+      description: {
+        en: "Long-grain aromatic rice perfect for daily meals and special dishes.",
+        ur: "روزمرہ کے کھانوں اور خاص پکوانوں کے لیے لمبے دانے والے خوشبودار چاول۔",
+      },
+      category: { en: "Grains", ur: "اناج" },
+      brand: { en: "Royal Harvest", ur: "رائل ہارویسٹ" },
       isAvailable: true,
-      imageURL: "/Images/Products/Covers/Headphone.jfif",
-      tags: ["wireless", "headphones", "audio"],
+      isNumerical: true,
+      imageURL: "/Images/Products/Covers/Grains/banaspati-rice.avif",
     },
     {
       id: 2,
-      name: "Smartwatch",
-      price: 199.99,
-      description: "A sleek smart watch with multiple health tracking features.",
-      category: "Electronics",
-      brand: "Generic",
+      name: { en: "Whole Wheat Flour", ur: "مکمل گندم کا آٹا" },
+      price: 50,
+      description: {
+        en: "High-quality whole wheat flour ideal for baking and chapatis.",
+        ur: "بیکنگ اور چپاتیوں کے لیے اعلیٰ معیار کا مکمل گندم کا آٹا۔",
+      },
+      category: { en: "Grains", ur: "اناج" },
+      brand: { en: "GrainMill", ur: "گرین مل" },
       isAvailable: true,
-      imageURL: "/Images/Products/Covers/Smartwatch.avif",
-      tags: ["smartwatch", "wearable", "health"],
+      isNumerical: true,
+      imageURL: "/Images/Products/Covers/Grains/rice.avif",
     },
     {
       id: 3,
-      name: "Running Shoes",
-      price: 129.99,
-      description: "Comfortable and durable running shoes for all terrains.",
-      category: "Footwear",
-      brand: "Generic",
+      name: { en: "Rolled Oats", ur: "رولڈ اوٹس" },
+
+      price: 9000,
+      description: {
+        en: "Nutritious rolled oats great for breakfast bowls and baking.",
+        ur: "غذائیت سے بھرپور رولڈ اوٹس جو ناشتے کے پیالوں اور بیکنگ کے لیے بہترین ہیں۔",
+      },
+      category: { en: "Grains", ur: "اناج" },
+      brand: { en: "OatVille", ur: "اوٹ ویل" },
+      isAvailable: true,
+      isNumerical: true,
+      imageURL: "/Images/Products/Covers/Grains/banaspati-rice.avif",
+    },
+    {
+      id: 4,
+      name: { en: "Quinoa", ur: "کینوا" },
+      price: 230,
+      description: {
+        en: "Protein-rich white quinoa, perfect for salads and healthy meals.",
+        ur: "پروٹین سے بھرپور سفید کینوا، سلاد اور صحت مند کھانوں کے لیے بہترین۔",
+      },
+      category: { en: "Grains", ur: "اناج" },
+      brand: { en: "NutriSeed", ur: "نیوٹری سیڈ" },
       isAvailable: false,
-      imageURL: "/Images/Products/Covers/RunningShoes.avif",
-      tags: ["running", "shoes", "fitness"],
+      isNumerical: true,
+      imageURL: "/Images/Products/Covers/Grains/rice.avif",
+    },
+    {
+      id: 5,
+      name: { en: "Cornmeal", ur: "کارن میل" },
+      price: 340,
+      description: {
+        en: "Finely ground cornmeal suitable for cornbread and crusts.",
+        ur: "باریک پیسا ہوا کارن میل جو کارن بریڈ اور کرسٹ کے لیے موزوں ہے۔",
+      },
+      category: { en: "Grains", ur: "اناج" },
+      brand: { en: "GoldenCorn", ur: "گولڈن کارن" },
+      isNumerical: true,
+      isAvailable: true,
+      imageURL: "/Images/Products/Covers/Grains/banaspati-rice.avif",
+    },
+    {
+      id: 6,
+      name: { en: "Brown Rice", ur: "براؤن چاول" },
+      price: 100,
+      description: {
+        en: "Fiber-rich whole grain brown rice for healthier meals.",
+        ur: "فائبر سے بھرپور مکمل اناج براؤن چاول صحت مند کھانوں کے لیے۔",
+      },
+      category: { en: "Grains", ur: "اناج" },
+      brand: { en: "EarthyFarm", ur: "ارتھی فارم" },
+      isAvailable: true,
+      isNumerical: true,
+      imageURL: "/Images/Products/Covers/Grains/rice.avif",
+    },
+    {
+      id: 7,
+      name: { en: "Barley", ur: "جو" },
+      price: 725,
+      description: {
+        en: "Whole barley grains perfect for soups, salads, and porridge.",
+        ur: "پورے جو کے دانے جو سوپ، سلاد، اور دلیہ کے لیے بہترین ہیں۔",
+      },
+      category: { en: "Grains", ur: "اناج" },
+      brand: { en: "BarleyCo", ur: "بارلی کو" },
+      isNumerical: true,
+      isAvailable: true,
+      imageURL: "/Images/Products/Covers/Grains/banaspati-rice.avif",
+    },
+    {
+      id: 8,
+      name: { en: "Millet", ur: "باجرا" },
+      price: 650,
+      description: {
+        en: "Nutrient-rich millet used in traditional dishes and healthy recipes.",
+        ur: "روایتی کھانوں اور صحت مند ترکیبوں میں استعمال ہونے والا غذائیت سے بھرپور باجرا۔",
+      },
+      category: { en: "Grains", ur: "اناج" },
+      brand: { en: "GreenFields", ur: "گرین فیلڈز" },
+      isAvailable: false,
+      isNumerical: true,
+      imageURL: "/Images/Products/Covers/Grains/rice.avif",
+    },
+    {
+      id: 9,
+      name: { en: "Sorghum (Jowar)", ur: "جوار" },
+      price: 950,
+      description: {
+        en: "Gluten-free whole sorghum grains ideal for flour and porridges.",
+        ur: "گلوٹین سے پاک پورے جوار کے دانے جو آٹے اور دلیہ کے لیے مثالی ہیں۔",
+      },
+      category: { en: "Grains", ur: "اناج" },
+      brand: { en: "HealthyHarvest", ur: "ہیلتھی ہارویسٹ" },
+      isAvailable: true,
+      isNumerical: true,
+      imageURL: "/Images/Products/Covers/Grains/banaspati-rice.avif",
+    },
+    {
+      id: 10,
+      name: { en: "Couscous", ur: "کوسکوس" },
+      price: 110,
+      description: {
+        en: "Quick-cooking couscous made from semolina wheat.",
+        ur: "سمولینا گندم سے بنایا گیا جلد پکنے والا کوسکوس۔",
+      },
+      category: { en: "Grains", ur: "اناج" },
+      brand: { en: "GoldenGrain", ur: "گولڈن گرین" },
+      isAvailable: true,
+      isNumerical: true,
+      imageURL: "/Images/Products/Covers/Grains/rice.avif",
     },
   ]);
 
@@ -92,7 +204,7 @@ export default function AdminDashboard() {
       items: 4,
     },
   ]);
-    const getStatusColor = (status) => {
+  const getStatusColor = (status) => {
     const colors = {
       pending: "bg-amber-500 text-amber-300 border border-amber-500/40",
       processing: "bg-sky-500/10 text-sky-300 border border-sky-500/40",
@@ -101,7 +213,7 @@ export default function AdminDashboard() {
         "bg-emerald-500/10 text-emerald-300 border border-emerald-500/40",
       cancelled: "bg-rose-500/10 text-rose-300 border border-rose-500/40",
       true: "bg-emerald-500/10 text-emerald-300 border border-emerald-500/40",
-        false: "bg-rose-500/10 text-rose-300 border border-rose-500/40",
+      false: "bg-rose-500/10 text-rose-300 border border-rose-500/40",
     };
     return colors[status] || "bg-white/5 text-gray-200 border border-white/10";
   };
@@ -166,7 +278,7 @@ export default function AdminDashboard() {
     setEditingProduct(product);
     setShowProductModal(true);
   };
-
+  console.log();
   return (
     <div className="min-h-screen bg-linear-to-br from-[#171d1e] via-[#1b2426] to-[#0f1415] text-gray-100">
       {/* Header */}
@@ -183,11 +295,8 @@ export default function AdminDashboard() {
 
               <div>
                 <h1 className="text-lg sm:text-2xl font-bold text-white">
-                  Admin Dashboard
+                  {t("header.title")}
                 </h1>
-                <p className="hidden sm:block text-sm text-gray-400">
-                  Aligned with storefront palette
-                </p>
               </div>
             </div>
             <div className="flex items-center space-x-2 sm:space-x-4">
@@ -195,7 +304,7 @@ export default function AdminDashboard() {
                 <Search className="w-5 h-5 text-gray-500 mr-2" />
                 <input
                   type="text"
-                  placeholder="Search products, orders..."
+                  placeholder={t("header.searchplaceholder")}
                   className="bg-transparent border-none outline-none text-sm w-48 lg:w-64 placeholder-gray-500 text-gray-100"
                 />
               </div>
@@ -225,12 +334,32 @@ export default function AdminDashboard() {
         >
           <nav className="p-4 space-y-1">
             {[
-              { id: "dashboard", label: "Dashboard", icon: BarChart3 },
-              { id: "products", label: "Products", icon: Package },
-              { id: "orders", label: "Orders", icon: ShoppingCart },
-              { id: "customers", label: "Customers", icon: Users },
-              { id: "analytics", label: "Analytics", icon: TrendingUp },
-              { id: "settings", label: "Settings", icon: Settings },
+              {
+                id: "dashboard",
+                label: t("sidebar.dashboard"),
+                icon: BarChart3,
+              },
+              {
+                id: "products",
+                label: t("sidebar.products"),
+                icon: Package,
+              },
+              {
+                id: "orders",
+                label: t("sidebar.orders"),
+                icon: ShoppingCart,
+              },
+              { id: "inbox", label: t("sidebar.inbox"), icon: Inbox },
+              {
+                id: "analytics",
+                label: t("sidebar.analytics"),
+                icon: TrendingUp,
+              },
+              {
+                id: "settings",
+                label: t("sidebar.settings"),
+                icon: Settings,
+              },
             ].map((item) => (
               <button
                 key={item.id}
@@ -257,7 +386,7 @@ export default function AdminDashboard() {
             <div className="space-y-4 sm:space-y-6">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                 <h2 className="text-2xl sm:text-3xl font-bold text-white">
-                  Dashboard Overview
+                  Dashboard 
                 </h2>
                 <div className="text-xs sm:text-sm text-gray-400">
                   Last updated: 2 mins ago
@@ -349,20 +478,25 @@ export default function AdminDashboard() {
                           className="flex items-center justify-between p-2 sm:p-3 hover:bg-white/5 rounded-lg transition-colors"
                         >
                           <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
-                            <span className="text-xl sm:text-2xl shrink-0">
-                              {product.image}
+                            <span className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0">
+                              <Image
+                                src={product.imageURL}
+                                alt={product.name[i18n.language]}
+                                fill
+                                className="object-cover rounded-md"
+                              />
                             </span>
                             <div className="min-w-0 flex-1">
                               <div className="font-medium text-white text-sm sm:text-base truncate">
-                                {product.name}
+                                {product.name[i18n.language]}
                               </div>
                               <div className="text-xs sm:text-sm text-gray-400 truncate">
-                                {product.category}
+                                {product.category[i18n.language]}
                               </div>
                             </div>
                           </div>
                           <div className="text-orange-300 font-medium text-sm sm:text-base ml-2 shrink-0">
-                            {product.isAvailable ? "Available" : "Unavailable"} 
+                            {product.isAvailable ? "Available" : "Unavailable"}
                           </div>
                         </div>
                       ))}
@@ -383,11 +517,13 @@ export default function AdminDashboard() {
             />
           )}
 
-          {activeTab === "orders" && <Orders
-            getStatusColor={getStatusColor}
-            orders={orders}
-            setOrders={setOrders}
-           />}
+          {activeTab === "orders" && (
+            <Orders
+              getStatusColor={getStatusColor}
+              orders={orders}
+              setOrders={setOrders}
+            />
+          )}
         </main>
       </div>
 

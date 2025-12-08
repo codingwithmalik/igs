@@ -38,23 +38,10 @@ const productSchema = new mongoose.Schema(
       },
     ],
 
-    stock: {
-      type: Number,
-      required: false,
-      default: 0,
-      min: 0,
-    },
-
     brand: {
       type: String,
       default: "Generic",
     },
-
-    tags: {
-      type: [String],
-      default: [],
-    },
-
     isAvailable: {
       type: Boolean,
       default: true,

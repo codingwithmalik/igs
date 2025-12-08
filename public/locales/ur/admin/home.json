@@ -1,0 +1,63 @@
+{
+  "sidebar": {
+    "dashboard": "ڈیش بورڈ",
+    "products": "مصنوعات",
+    "orders": "آرڈرز",
+    "inbox": "ان باکس",
+    "customers": "صارفین",
+    "analytics": "تجزیات",
+    "settings": "سیٹنگز"
+  },
+  "header": {
+    "title": "ایڈمن ڈیش بورڈ",
+    "searchplaceholder": "مصنوعات، آرڈرز تلاش کریں..."
+  },
+  "productmodal": {
+    "edittitle": "مصنوعہ ترمیم کریں",
+    "addtitle": "مصنوعہ شامل کریں",
+    "nameen": "نام (انگریزی)",
+    "nameur": "نام (اردو)",
+    "category": "زمرہ",
+    "categories":{
+      "electronics": "الیکٹرانکس",
+      "fashion": "فیشن",
+      "grains": "اناج",
+      "homeappliances": "گھریلو آلات",
+      "books": "کتابیں",
+      "toys": "کھلونے"
+    },
+    "price": "قیمت",
+    "brand": "برانڈ",
+    "imageURL": "تصویر کا یو آر ایل",
+    "descriptionen": "تفصیل (انگریزی)",
+    "descriptionur": "تفصیل (اردو)",
+    "isavailable": "کیا دستیاب ہے",
+    "isnumerical": "کیا عددی ہے",
+    "savebutton": "محفوظ کریں",
+    "addbutton": "شامل کریں",
+    "cancelbutton": "منسوخ کریں",
+    "updatebutton": "اپ ڈیٹ کریں"
+  },
+  "products": {
+    "title": "مصنوعات",
+    "addProduct": "مصنوعہ شامل کریں",
+
+    "table": {
+      "product": "مصنوعہ",
+      "category": "زمرہ",
+      "price": "قیمت",
+      "brand": "برانڈ",
+      "status": "حالت",
+      "priceunit": "روپے",
+      "numerical": "عددی",
+      "nonNumerical": "غیر عددی",
+      "actions": "اعمال",
+      "available": "دستیاب",
+      "unavailable": "غیر دستیاب"
+    },
+
+    "description": {
+      "label": "تفصیل :"
+    }
+  }
+}

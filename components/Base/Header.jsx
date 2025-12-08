@@ -94,7 +94,7 @@ const Header = () => {
             </button>
             <nav
               ref={navRef}
-              className={`nav  bg-[#0b0f10]/95 border-r border-[#1f2a2d] backdrop-blur text-gray-50 capitalize flex absolute top-[2.35rem] sm:top-[3.35rem] left-0 p-6 sm:p-8 md:p-10 w-[85vw] sm:w-[60vw] md:w-[50vw] lg:w-[30vw] items-center flex-col gap-8 sm:gap-10 h-[calc(100vh-2.5rem)] sm:h-[90vh] opacity-0 z-50 rounded-2xl`}
+              className={`nav z-101  bg-[#0b0f10]/95 border-r border-[#1f2a2d] backdrop-blur text-gray-50 capitalize flex absolute top-[2.35rem] sm:top-[3.35rem] left-0 p-6 sm:p-8 md:p-10 w-[85vw] sm:w-[60vw] md:w-[50vw] lg:w-[30vw] items-center flex-col gap-8 sm:gap-10 h-[calc(100vh-2.5rem)] sm:h-[90vh] opacity-0 rounded-2xl`}
             >
               <Link
                 href={"/"}

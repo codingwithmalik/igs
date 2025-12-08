@@ -1,0 +1,61 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "orders": "Orders",
+    "inbox": "Inbox",
+    "customers": "Customers",
+    "analytics": "Analytics",
+    "settings": "Settings"
+  },
+  "header": {
+    "title": "Admin Dashboard",
+    "searchplaceholder": "Search products, orders..."
+  },
+  "productmodal": {
+    "edittitle": "Edit Product",
+    "addtitle": "Add Product",
+    "nameen": "Name (English)",
+    "nameur": "Name (Urdu)",
+    "category": "Category",
+    "categories": {
+      "electronics": "Electronics",
+      "grains": "Grains",
+      "fashion": "Fashion",
+      "homeappliances": "Home Appliances",
+      "books": "Books",
+      "toys": "Toys"
+    },
+    "price": "Price",
+    "brand": "Brand",
+    "imageURL": "Image URL",
+    "descriptionen": "Description (English)",
+    "descriptionur": "Description (Urdu)",
+    "isavailable": "Is Available",
+    "isnumerical": "Is Numerical",
+    "savebutton": "Save",
+    "addbutton": "Add",
+    "cancelbutton": "Cancel",
+    "updatebutton": "Update"
+  },
+  "products": {
+    "title": "Products",
+    "addProduct": "Add Product",
+    "table": {
+      "product": "Product",
+      "category": "Category",
+      "price": "Price",
+      "brand": "Brand",
+      "status": "Status",
+      "priceunit": "rupees",
+      "numerical": "Numerical",
+      "nonNumerical": "Non-Numerical",
+      "actions": "Actions",
+      "available": "Available",
+      "unavailable": "Unavailable"
+    },
+    "description": {
+      "label": "Description :"
+    }
+  }
+}
