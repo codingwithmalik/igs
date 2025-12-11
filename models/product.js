@@ -8,43 +8,60 @@ const productSchema = new mongoose.Schema(
       unique: true,
     },
     name: {
-      type: String,
-      required: [true, "Product name is required"],
-      trim: true,
-      maxlength: 120,
+      en: {
+        type: String,
+        required: [true, "Product name is required"],
+      },
+      ur: {
+        type: String,
+        required: [true, "Product name is required"],
+      },
     },
-
     description: {
-      type: String,
-      required: [true, "Product description is required"],
+      en: {
+        type: String,
+        required: [true, "Product description is required"],
+      },
+      ur: {
+        type: String,
+        required: [true, "Product description is required"],
+      },
     },
-
     price: {
       type: Number,
       required: [true, "Product price is required"],
       min: 0,
     },
-
     category: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
-    images: [
-      {
-        url: { type: String, required: true },
-        public_id: { type: String }, // Optional: if using Cloudinary
+      en: {
+        type: String,
+        required: [true, "Product category is required"],
       },
-    ],
-
+      ur: {
+        type: String,
+        required: [true, "Product category is required"],
+      },
+    },
+    imageURL: {
+      url: { type: String, required: true },
+    },
     brand: {
-      type: String,
-      default: "Generic",
+      en: {
+        type: String,
+        required: [true, "Product brand is required"],
+      },
+      ur: {
+        type: String,
+        required: [true, "Product brand is required"],
+      },
     },
     isAvailable: {
       type: Boolean,
       default: true,
+    },
+    isNumerical: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }

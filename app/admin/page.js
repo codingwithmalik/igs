@@ -301,7 +301,7 @@ export default function AdminDashboard() {
             </div>
             <div className="flex items-center space-x-2 sm:space-x-4">
               <div className="hidden md:flex items-center bg-[#0b0f10] border border-[#1f2a2d] rounded-lg px-4 py-2 shadow-inner shadow-black/30">
-                <Search className="w-5 h-5 text-gray-500 mr-2" />
+                <Search className={`w-5 h-5 text-gray-500 ${i18n.language === "en" ? "mr-2" : "ml-2"}`} />
                 <input
                   type="text"
                   placeholder={t("header.searchplaceholder")}

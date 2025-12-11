@@ -2,9 +2,11 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import UploadImage from "./ImageUpload";
 
 function ProductModal({ product, onClose, onSave }) {
   const { t } = useTranslation("admin/home");
+  const [uploading, setUploading] = useState(false);
   const categoriesDict = {
     electronics: { en: "Electronics", ur: "الیکٹرانکس" },
     grains: { en: "Grains", ur: "اناج" },
@@ -28,7 +30,7 @@ function ProductModal({ product, onClose, onSave }) {
           name: { en: "", ur: "" },
           description: { en: "", ur: "" },
           price: 0,
-          category: "Electronics",
+          category: "grains",
           brand: { en: "Generic", ur: "جنرل" },
           isNumerical: true,
           isAvailable: true,
@@ -225,17 +227,22 @@ function ProductModal({ product, onClose, onSave }) {
             <label className="block text-sm font-medium text-gray-300 mb-2">
               {t("productmodal.imageURL")}
             </label>
-            <input
-              type="text"
-              value={formData.imageURL}
-              onChange={(e) =>
+            <UploadImage
+              uploading={uploading}
+              setUploading={setUploading}
+              onUpload={(url) =>
                 setFormData({
                   ...formData,
-                  imageURL: e.target.value,
+                  imageURL: url,
                 })
               }
-              className="w-full px-4 py-2 border border-[#1f2a2d] bg-[#0b0f10] text-gray-100 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
             />
+            {formData.imageURL && (
+              <img
+                src={formData.imageURL}
+                className="w-24 h-24 object-cover rounded-lg mt-2 justify-center"
+              />
+            )}
           </div>
 
           {/* IS AVAILABLE */}
@@ -278,10 +285,13 @@ function ProductModal({ product, onClose, onSave }) {
               {t("productmodal.cancelbutton")}
             </button>
             <button
+              disabled={uploading}
               onClick={handleSubmit}
-              className="flex-1 px-4 py-2 bg-linear-to-r from-emerald-500 to-green-600 text-white rounded-lg hover:shadow-lg hover:shadow-emerald-500/30 transition-shadow"
+              className={`flex-1 px-4 py-2 bg-linear-to-r  bg-emerald-700 text-white rounded-lg hover:shadow-lg hover:shadow-emerald-500/30 transition-shadow disabled:opacity-50 disabled:cursor-not-allowed`}
             >
-              {product
+              {uploading
+                ? "Wait"
+                : product
                 ? t("productmodal.updatebutton")
                 : t("productmodal.addbutton")}
             </button>
