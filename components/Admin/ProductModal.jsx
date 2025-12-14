@@ -250,12 +250,13 @@ function ProductModal({ product, onClose, onSave }) {
             <input
               type="checkbox"
               checked={formData.isAvailable}
+              id="availability"
               onChange={(e) =>
                 setFormData({ ...formData, isAvailable: e.target.checked })
               }
               className="w-4 h-4"
             />
-            <label className="text-gray-300 text-sm">
+            <label className="text-gray-300 text-sm" htmlFor="availability">
               {t("productmodal.isavailable")}
             </label>
           </div>
@@ -264,13 +265,14 @@ function ProductModal({ product, onClose, onSave }) {
           <div className="flex items-center gap-2">
             <input
               type="checkbox"
+              id="numeric"
               checked={formData.isNumerical}
               onChange={(e) =>
                 setFormData({ ...formData, isNumerical: e.target.checked })
               }
               className="w-4 h-4"
             />
-            <label className="text-gray-300 text-sm">
+            <label className="text-gray-300 text-sm" htmlFor="numeric">
               {t("productmodal.isnumerical")}
             </label>
           </div>

@@ -6,6 +6,7 @@ import Header from "../components/Base/Header.jsx";
 import "../i18n.js";
 import "./globals.css";
 import LanguageContext from "@/contexts/LanguageContext.jsx";
+import StoreProviders from "./store/Providers.jsx";
 import Footer from "@/components/Base/Footer.jsx";
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -31,24 +32,26 @@ export default function RootLayout({ children }) {
         className={`${poppins.variable} ${permanentMarker.variable} antialiased`}
       >
         <React.Suspense fallback="loading...">
-          <LanguageContext>
-            <Header />
-            <ToastContainer
-              position="top-center"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick={false}
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="dark"
-              transition={Bounce}
-            />
-            {children}
-            <Footer />
-          </LanguageContext>
+          <StoreProviders>
+            <LanguageContext>
+              <Header />
+              <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                transition={Bounce}
+              />
+              {children}
+              <Footer />
+            </LanguageContext>
+          </StoreProviders>
         </React.Suspense>
       </body>
     </html>

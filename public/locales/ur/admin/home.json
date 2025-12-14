@@ -18,7 +18,7 @@
     "nameen": "نام (انگریزی)",
     "nameur": "نام (اردو)",
     "category": "زمرہ",
-    "categories":{
+    "categories": {
       "electronics": "الیکٹرانکس",
       "fashion": "فیشن",
       "grains": "اناج",
@@ -41,7 +41,6 @@
   "products": {
     "title": "مصنوعات",
     "addProduct": "مصنوعہ شامل کریں",
-
     "table": {
       "product": "مصنوعہ",
       "category": "زمرہ",
@@ -52,12 +51,83 @@
       "numerical": "عددی",
       "nonNumerical": "غیر عددی",
       "actions": "اعمال",
+      "edit": "ترمیم کریں",
+      "delete": "حذف کریں",
       "available": "دستیاب",
       "unavailable": "غیر دستیاب"
     },
 
     "description": {
       "label": "تفصیل :"
+    },
+    "units": {
+      "kilogram": "/ فی کلوگرام ",
+      "item": "/ فی آئٹم"
+    }
+  },
+  "orders": {
+    "orders": "آرڈرز",
+    "allStatus": "تمام اسٹیٹس",
+    "orderId": "آرڈر آئی ڈی",
+    "customer": "گاہک",
+    "date": "تاریخ",
+    "items": "اشیاء",
+    "total": "کل رقم",
+    "status": "اسٹیٹس",
+    "actions": "ایکشنز",
+
+    "statuses": {
+      "pending": "زیرِ التواء",
+      "processing": "پروسیسنگ",
+      "shipped": "روانہ",
+      "delivered": "ڈیلیور ہو چکا",
+      "cancelled": "منسوخ"
+    },
+
+    "noOrders": "ابھی کوئی آرڈر موجود نہیں",
+    "itemsCount": "{{count}} اشیاء",
+    "currency": "روپے"
+  },
+  "ordermodal": {
+    "orderDetails": "آرڈر کی تفصیلات",
+    "deleteOrder": "آرڈر حذف کریں",
+    "close": "بند کریں",
+
+    "orderId": "آرڈر آئی ڈی",
+    "status": "اسٹیٹس",
+
+    "customerInfo": "گاہک کی معلومات",
+    "name": "نام",
+    "email": "ای میل",
+    "phone": "فون",
+    "address": "پتہ",
+
+    "items": "اشیاء",
+    "quantity": "مقدار",
+    "price": "قیمت",
+
+    "paymentMethod": "ادائیگی کا طریقہ",
+    "paymentmethods": {
+      "cod": "کیش آن ڈیلیوری"
+    },
+    "deliveryPickup": "ڈیلیوری / پک اپ",
+    "methods": {
+      "pickup": "میں خود لے جاؤں گا۔",
+      "delivery": "گھر پہنچائیں"
+    },
+
+    "subtotal": "ذیلی رقم",
+    "shipping": "ڈیلیوری چارجز",
+    "total": "کل رقم",
+
+    "currency": "روپے",
+
+    "statuses": {
+      "pending": "زیرِ التواء",
+      "processing": "پروسیسنگ",
+      "shipped": "روانہ",
+      "delivered": "ڈیلیور ہو چکا",
+      "cancelled": "منسوخ"
     }
   }
 }

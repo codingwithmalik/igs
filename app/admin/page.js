@@ -1,5 +1,4 @@
 "use client";
-import ProductModal from "@/components/Admin/ProductModal.jsx";
 import React, { useState } from "react";
 import Orders from "@/components/Admin/Orders.jsx";
 import Products from "@/components/Admin/Products.jsx";
@@ -19,199 +18,23 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function AdminDashboard() {
-  const { t , i18n } = useTranslation("admin/home");
+  const dispatch = useDispatch();
+  const { t, i18n } = useTranslation("admin/home");
   const [activeTab, setActiveTab] = useState("dashboard");
-  const [showProductModal, setShowProductModal] = useState(false);
-  const [editingProduct, setEditingProduct] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      name: { en: "Basmati Rice", ur: "باسمتی چاول" },
-      price: 200,
-      description: {
-        en: "Long-grain aromatic rice perfect for daily meals and special dishes.",
-        ur: "روزمرہ کے کھانوں اور خاص پکوانوں کے لیے لمبے دانے والے خوشبودار چاول۔",
-      },
-      category: { en: "Grains", ur: "اناج" },
-      brand: { en: "Royal Harvest", ur: "رائل ہارویسٹ" },
-      isAvailable: true,
-      isNumerical: true,
-      imageURL: "/Images/Products/Covers/Grains/banaspati-rice.avif",
-    },
-    {
-      id: 2,
-      name: { en: "Whole Wheat Flour", ur: "مکمل گندم کا آٹا" },
-      price: 50,
-      description: {
-        en: "High-quality whole wheat flour ideal for baking and chapatis.",
-        ur: "بیکنگ اور چپاتیوں کے لیے اعلیٰ معیار کا مکمل گندم کا آٹا۔",
-      },
-      category: { en: "Grains", ur: "اناج" },
-      brand: { en: "GrainMill", ur: "گرین مل" },
-      isAvailable: true,
-      isNumerical: true,
-      imageURL: "/Images/Products/Covers/Grains/rice.avif",
-    },
-    {
-      id: 3,
-      name: { en: "Rolled Oats", ur: "رولڈ اوٹس" },
-
-      price: 9000,
-      description: {
-        en: "Nutritious rolled oats great for breakfast bowls and baking.",
-        ur: "غذائیت سے بھرپور رولڈ اوٹس جو ناشتے کے پیالوں اور بیکنگ کے لیے بہترین ہیں۔",
-      },
-      category: { en: "Grains", ur: "اناج" },
-      brand: { en: "OatVille", ur: "اوٹ ویل" },
-      isAvailable: true,
-      isNumerical: true,
-      imageURL: "/Images/Products/Covers/Grains/banaspati-rice.avif",
-    },
-    {
-      id: 4,
-      name: { en: "Quinoa", ur: "کینوا" },
-      price: 230,
-      description: {
-        en: "Protein-rich white quinoa, perfect for salads and healthy meals.",
-        ur: "پروٹین سے بھرپور سفید کینوا، سلاد اور صحت مند کھانوں کے لیے بہترین۔",
-      },
-      category: { en: "Grains", ur: "اناج" },
-      brand: { en: "NutriSeed", ur: "نیوٹری سیڈ" },
-      isAvailable: false,
-      isNumerical: true,
-      imageURL: "/Images/Products/Covers/Grains/rice.avif",
-    },
-    {
-      id: 5,
-      name: { en: "Cornmeal", ur: "کارن میل" },
-      price: 340,
-      description: {
-        en: "Finely ground cornmeal suitable for cornbread and crusts.",
-        ur: "باریک پیسا ہوا کارن میل جو کارن بریڈ اور کرسٹ کے لیے موزوں ہے۔",
-      },
-      category: { en: "Grains", ur: "اناج" },
-      brand: { en: "GoldenCorn", ur: "گولڈن کارن" },
-      isNumerical: true,
-      isAvailable: true,
-      imageURL: "/Images/Products/Covers/Grains/banaspati-rice.avif",
-    },
-    {
-      id: 6,
-      name: { en: "Brown Rice", ur: "براؤن چاول" },
-      price: 100,
-      description: {
-        en: "Fiber-rich whole grain brown rice for healthier meals.",
-        ur: "فائبر سے بھرپور مکمل اناج براؤن چاول صحت مند کھانوں کے لیے۔",
-      },
-      category: { en: "Grains", ur: "اناج" },
-      brand: { en: "EarthyFarm", ur: "ارتھی فارم" },
-      isAvailable: true,
-      isNumerical: true,
-      imageURL: "/Images/Products/Covers/Grains/rice.avif",
-    },
-    {
-      id: 7,
-      name: { en: "Barley", ur: "جو" },
-      price: 725,
-      description: {
-        en: "Whole barley grains perfect for soups, salads, and porridge.",
-        ur: "پورے جو کے دانے جو سوپ، سلاد، اور دلیہ کے لیے بہترین ہیں۔",
-      },
-      category: { en: "Grains", ur: "اناج" },
-      brand: { en: "BarleyCo", ur: "بارلی کو" },
-      isNumerical: true,
-      isAvailable: true,
-      imageURL: "/Images/Products/Covers/Grains/banaspati-rice.avif",
-    },
-    {
-      id: 8,
-      name: { en: "Millet", ur: "باجرا" },
-      price: 650,
-      description: {
-        en: "Nutrient-rich millet used in traditional dishes and healthy recipes.",
-        ur: "روایتی کھانوں اور صحت مند ترکیبوں میں استعمال ہونے والا غذائیت سے بھرپور باجرا۔",
-      },
-      category: { en: "Grains", ur: "اناج" },
-      brand: { en: "GreenFields", ur: "گرین فیلڈز" },
-      isAvailable: false,
-      isNumerical: true,
-      imageURL: "/Images/Products/Covers/Grains/rice.avif",
-    },
-    {
-      id: 9,
-      name: { en: "Sorghum (Jowar)", ur: "جوار" },
-      price: 950,
-      description: {
-        en: "Gluten-free whole sorghum grains ideal for flour and porridges.",
-        ur: "گلوٹین سے پاک پورے جوار کے دانے جو آٹے اور دلیہ کے لیے مثالی ہیں۔",
-      },
-      category: { en: "Grains", ur: "اناج" },
-      brand: { en: "HealthyHarvest", ur: "ہیلتھی ہارویسٹ" },
-      isAvailable: true,
-      isNumerical: true,
-      imageURL: "/Images/Products/Covers/Grains/banaspati-rice.avif",
-    },
-    {
-      id: 10,
-      name: { en: "Couscous", ur: "کوسکوس" },
-      price: 110,
-      description: {
-        en: "Quick-cooking couscous made from semolina wheat.",
-        ur: "سمولینا گندم سے بنایا گیا جلد پکنے والا کوسکوس۔",
-      },
-      category: { en: "Grains", ur: "اناج" },
-      brand: { en: "GoldenGrain", ur: "گولڈن گرین" },
-      isAvailable: true,
-      isNumerical: true,
-      imageURL: "/Images/Products/Covers/Grains/rice.avif",
-    },
-  ]);
-
-  const [orders, setOrders] = useState([
-    {
-      id: "#ORD-001",
-      customer: "John Doe",
-      total: 289.97,
-      status: "pending",
-      date: "2024-12-05",
-      items: 3,
-    },
-    {
-      id: "#ORD-002",
-      customer: "Jane Smith",
-      total: 149.99,
-      status: "shipped",
-      date: "2024-12-04",
-      items: 2,
-    },
-    {
-      id: "#ORD-003",
-      customer: "Mike Johnson",
-      total: 89.99,
-      status: "delivered",
-      date: "2024-12-03",
-      items: 1,
-    },
-    {
-      id: "#ORD-004",
-      customer: "Sarah Williams",
-      total: 449.97,
-      status: "processing",
-      date: "2024-12-05",
-      items: 4,
-    },
-  ]);
+  const products = useSelector((state) => state.products.products);
+  const orders = useSelector((state) => state.orders.orders);
   const getStatusColor = (status) => {
     const colors = {
-      pending: "bg-amber-500 text-amber-300 border border-amber-500/40",
-      processing: "bg-sky-500/10 text-sky-300 border border-sky-500/40",
-      shipped: "bg-violet-500/10 text-violet-300 border border-violet-500/40",
+      pending: "bg-amber-500/20 text-amber-300 border border-amber-500/40",
+      processing: "bg-sky-500/20 text-sky-300 border border-sky-500/40",
+      shipped: "bg-violet-500/20 text-violet-300 border border-violet-500/40",
       delivered:
-        "bg-emerald-500/10 text-emerald-300 border border-emerald-500/40",
-      cancelled: "bg-rose-500/10 text-rose-300 border border-rose-500/40",
+        "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40",
+      cancelled: "bg-rose-500/20 text-rose-300 border border-rose-500/40",
       true: "bg-emerald-500/10 text-emerald-300 border border-emerald-500/40",
       false: "bg-rose-500/10 text-rose-300 border border-rose-500/40",
     };
@@ -256,28 +79,6 @@ export default function AdminDashboard() {
     amber: { iconBg: "bg-amber-500/10", iconText: "text-amber-300" },
   };
 
-  const handleSaveProduct = (product) => {
-    if (editingProduct) {
-      setProducts(
-        products.map((p) =>
-          p.id === editingProduct.id ? { ...product, id: editingProduct.id } : p
-        )
-      );
-    } else {
-      setProducts([...products, { ...product, id: products.length + 1 }]);
-    }
-    setShowProductModal(false);
-    setEditingProduct(null);
-  };
-
-  const handleDeleteProduct = (id) => {
-    setProducts(products.filter((p) => p.id !== id));
-  };
-
-  const handleEditProduct = (product) => {
-    setEditingProduct(product);
-    setShowProductModal(true);
-  };
   console.log();
   return (
     <div className="min-h-screen bg-linear-to-br from-[#171d1e] via-[#1b2426] to-[#0f1415] text-gray-100">
@@ -301,7 +102,11 @@ export default function AdminDashboard() {
             </div>
             <div className="flex items-center space-x-2 sm:space-x-4">
               <div className="hidden md:flex items-center bg-[#0b0f10] border border-[#1f2a2d] rounded-lg px-4 py-2 shadow-inner shadow-black/30">
-                <Search className={`w-5 h-5 text-gray-500 ${i18n.language === "en" ? "mr-2" : "ml-2"}`} />
+                <Search
+                  className={`w-5 h-5 text-gray-500 ${
+                    i18n.language === "en" ? "mr-2" : "ml-2"
+                  }`}
+                />
                 <input
                   type="text"
                   placeholder={t("header.searchplaceholder")}
@@ -386,7 +191,7 @@ export default function AdminDashboard() {
             <div className="space-y-4 sm:space-y-6">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                 <h2 className="text-2xl sm:text-3xl font-bold text-white">
-                  Dashboard 
+                  Dashboard
                 </h2>
                 <div className="text-xs sm:text-sm text-gray-400">
                   Last updated: 2 mins ago
@@ -444,12 +249,12 @@ export default function AdminDashboard() {
                             {order.id}
                           </div>
                           <div className="text-xs sm:text-sm text-gray-400 truncate">
-                            {order.customer}
+                            {order.customer.name[i18n.language]}
                           </div>
                         </div>
                         <div className="text-right ml-2 shrink-0">
                           <div className="font-medium text-white text-sm sm:text-base">
-                            ${order.total}
+                            ${order.totals.total}
                           </div>
                           <span
                             className={`text-xs px-2 py-0.5 sm:py-1 rounded-full ${getStatusColor(
@@ -507,37 +312,14 @@ export default function AdminDashboard() {
           )}
 
           {activeTab === "products" && (
-            <Products
-              products={products}
-              setEditingProduct={setEditingProduct}
-              setShowProductModal={setShowProductModal}
-              getStatusColor={getStatusColor}
-              handleDeleteProduct={handleDeleteProduct}
-              handleEditProduct={handleEditProduct}
-            />
+            <Products products={products} getStatusColor={getStatusColor} />
           )}
 
           {activeTab === "orders" && (
-            <Orders
-              getStatusColor={getStatusColor}
-              orders={orders}
-              setOrders={setOrders}
-            />
+            <Orders getStatusColor={getStatusColor} orders={orders} />
           )}
         </main>
       </div>
-
-      {/* Product Modal */}
-      {showProductModal && (
-        <ProductModal
-          product={editingProduct}
-          onClose={() => {
-            setShowProductModal(false);
-            setEditingProduct(null);
-          }}
-          onSave={handleSaveProduct}
-        />
-      )}
     </div>
   );
 }

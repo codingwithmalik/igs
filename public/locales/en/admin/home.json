@@ -52,10 +52,81 @@
       "nonNumerical": "Non-Numerical",
       "actions": "Actions",
       "available": "Available",
-      "unavailable": "Unavailable"
+      "unavailable": "Unavailable",
+      "edit":"Edit",
+      "delete":"Delete"
     },
     "description": {
       "label": "Description :"
+    },
+    "units": {
+      "kilogram": "/ kg",
+      "item": "/ item"
+    }
+
+  },
+  "orders": {
+    "orders": "Orders",
+    "allStatus": "All Status",
+    "orderId": "Order ID",
+    "customer": "Customer",
+    "date": "Date",
+    "items": "Items",
+    "total": "Total",
+    "status": "Status",
+    "actions": "Actions",
+
+    "statuses": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    },
+
+    "noOrders": "No orders yet",
+    "itemsCount": "{{count}} items",
+    "currency": "Rs"
+  },
+  "ordermodal": {
+    "orderDetails": "Order Details",
+    "deleteOrder": "Delete Order",
+    "close": "Close",
+
+    "orderId": "Order ID",
+    "status": "Status",
+
+    "customerInfo": "Customer Information",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+
+    "items": "Items",
+    "quantity": "Qty",
+    "price": "Price",
+
+    "paymentMethod": "Payment Method",
+        "paymentmethods":{
+      "cod":"Cash on delivery"
+    },
+    "deliveryPickup": "Delivery / Pickup",
+    "methods":{
+      "pickup": "Take away",
+      "delivery": "Home delivery"
+    },
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "total": "Total",
+
+    "currency": "Rs",
+
+    "statuses": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
     }
   }
 }
