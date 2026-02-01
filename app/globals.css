@@ -45,29 +45,118 @@ body {
   position: relative;
 }
 
-.nav-link:hover {
+/* Hamburger menu button hover effect (mobile) */
+.menu {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.375rem;
+}
+
+.menu:hover {
+  transform: scale(1.15) rotate(90deg);
+  color: rgba(70, 135, 89, 1);
+  filter: drop-shadow(0 0 8px rgba(70, 135, 89, 0.7));
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.menu:active {
+  transform: scale(0.95) rotate(90deg);
+}
+
+/* Sidebar navigation hover effects (mobile) */
+.nav .nav-link:hover {
   transform: scale(1.05) translateX(0.5rem);
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 12px rgba(70, 135, 89, 0.3);
 }
 
-.nav-link svg {
+.nav .nav-link svg {
   transition: all 0.3s ease-out;
 }
 
-.nav-link:hover svg {
+.nav .nav-link:hover svg {
   transform: scale(1.25) rotate(6deg);
   color: #171d1e;
   filter: drop-shadow(0 0 8px rgba(70, 135, 89, 0.6));
 }
 
-.nav-link span {
+.nav .nav-link span {
   transition: all 0.3s ease-out;
 }
 
-.nav-link:hover span {
+.nav .nav-link:hover span {
   transform: translateX(0.25rem);
   color: #ffffff;
   letter-spacing: 0.05em;
   text-shadow: 0 0 10px rgba(25, 36, 28, 0.5);
+}
+
+/* Horizontal navigation hover effects and animations (desktop) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .horizontal-nav .nav-link {
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+
+  .horizontal-nav .nav-link:nth-child(1) { animation-delay: 0.1s; }
+  .horizontal-nav .nav-link:nth-child(2) { animation-delay: 0.2s; }
+  .horizontal-nav .nav-link:nth-child(3) { animation-delay: 0.3s; }
+  .horizontal-nav .nav-link:nth-child(4) { animation-delay: 0.4s; }
+  .horizontal-nav .nav-link:nth-child(5) { animation-delay: 0.5s; }
+
+  .horizontal-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(70, 135, 89, 0.8), transparent);
+    transition: transform 0.3s ease-out;
+  }
+
+  .horizontal-nav .nav-link:hover {
+    transform: translateY(-2px) scale(1.05);
+    background-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 12px rgba(70, 135, 89, 0.2);
+  }
+
+  .horizontal-nav .nav-link:hover::before {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  .horizontal-nav .nav-link svg {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .horizontal-nav .nav-link:hover svg {
+    transform: scale(1.2) rotate(-5deg);
+    color: rgba(70, 135, 89, 1);
+    filter: drop-shadow(0 0 6px rgba(70, 135, 89, 0.8));
+  }
+
+  .horizontal-nav .nav-link span {
+    transition: all 0.3s ease-out;
+  }
+
+  .horizontal-nav .nav-link:hover span {
+    color: rgba(70, 135, 89, 1);
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 8px rgba(70, 135, 89, 0.6);
+  }
 }

@@ -1,5 +1,6 @@
 {
   "categories": {
+    "all": "تمام",
     "beverages": "مشروبات",
     "snacksChips": "ناشتہ اور چپس",
     "sweetsCandies": "مٹھائیاں اور کینڈی",
@@ -18,8 +19,20 @@
     "healthWellness": "صحت اور تندرستی",
     "frozenFoods": "منجمد کھانے",
     "condimentsSauces": "چٹنیاں اور ساس",
-    "breakfastCereals": "ناشتے کے اناج",
-    "dryFruitsNuts": "خشک میوہ جات"
-  }
+    "breakfastCereals": "ناشتے کے اناج"
+  },
+  "addToCart": "ٹوکری میں شامل کریں",
+  "selectUnit": "یونٹ منتخب کریں",
+  "gram": "گرام (g)",
+  "kilogram": "کلوگرام (kg)",
+  "pricePerPiece": "فی ٹکڑا قیمت",
+  "pricePerGram": "فی گرام قیمت",
+  "pricePerKg": "فی کلو قیمت",
+  "total": "کل",
+  "pieces": "ٹکڑے",
+  "outOfStock": "اسٹاک میں نہیں",
+  "noProducts": "کوئی مصنوعات نہیں ملی",
+  "enterAmount": "مقدار درج کریں",
+  "enterValidAmount": "براہ کرم درست مقدار درج کریں"
 }
 

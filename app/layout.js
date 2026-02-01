@@ -7,6 +7,7 @@ import "../i18n.js";
 import "./globals.css";
 import LanguageContext from "@/contexts/LanguageContext.jsx";
 import StoreProviders from "./store/Providers.jsx";
+import CartPersistence from "@/components/Cart/CartPersistence.jsx";
 import Footer from "@/components/Base/Footer.jsx";
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
       >
         <React.Suspense fallback="loading...">
           <StoreProviders>
+            <CartPersistence />
             <LanguageContext>
               <Header />
               <ToastContainer

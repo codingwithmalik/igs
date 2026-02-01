@@ -18,6 +18,7 @@
     "nameen": "نام (انگریزی)",
     "nameur": "نام (اردو)",
     "category": "زمرہ",
+    "selectcategory": "زمرہ منتخب کریں",
     "categories": {
       "electronics": "الیکٹرانکس",
       "fashion": "فیشن",
@@ -63,6 +64,29 @@
     "units": {
       "kilogram": "/ فی کلوگرام ",
       "item": "/ فی آئٹم"
+    },
+    "categories": {
+      "selectcategory": "زمرہ منتخب کریں",
+      "beverages": "مشروبات",
+      "snacksChips": "ناشتہ اور چپس",
+      "sweetsCandies": "مٹھائیاں اور کینڈی",
+      "riceGrains": "چاول اور اناج",
+      "spicesSeasonings": "مصالحے اور مسالے",
+      "cookingOil": "کھانا پکانے کا تیل",
+      "cannedFoods": "کین والی غذائیں",
+      "pastaNoodles": "پاستا اور نوڈلز",
+      "teaCoffee": "چائے اور کافی",
+      "sugarSweeteners": "چینی اور میٹھا",
+      "personalCare": "ذاتی دیکھ بھال",
+      "householdCleaning": "گھریلو صفائی",
+      "laundryDetergents": "کپڑے دھونے کا صابن",
+      "paperProducts": "کاغذی مصنوعات",
+      "babyCare": "بچوں کی دیکھ بھال",
+      "healthWellness": "صحت اور تندرستی",
+      "frozenFoods": "منجمد کھانے",
+      "condimentsSauces": "چٹنیاں اور ساس",
+      "breakfastCereals": "ناشتے کے اناج",
+      "dryFruitsNuts": "خشک میوہ جات"
     }
   },
   "orders": {
@@ -129,5 +153,20 @@
       "delivered": "ڈیلیور ہو چکا",
       "cancelled": "منسوخ"
     }
+  },
+  "inbox": {
+    "title": "ان باکس پیغامات",
+    "messages": "پیغامات",
+    "noMessages": "ابھی کوئی پیغام موجود نہیں",
+    "email": "ای میل",
+    "read": "پڑھا گیا",
+    "unread": "نا پڑھا",
+    "all": "سب"
+  },
+  "stats": {
+    "totalRevenue": "کل آمدنی",
+    "orders": "آرڈرز",
+    "products": "مصنوعات",
+    "customers": "صارفین"
   }
 }

@@ -1,0 +1,18 @@
+{
+  "title": "Your Cart",
+  "emptyTitle": "Your cart is empty.",
+  "emptyDescription": "Add products from the store to see them here.",
+  "goToProducts": "Go to Products",
+  "subtotal": "Sub Total",
+  "totalBill": "Total Bill",
+  "selfPickup": "Self pick up",
+  "homeDelivery": "Home delivery",
+  "deliveryFee": "Delivery fee",
+  "finalTotal": "Total",
+  "proceedToCheckout": "Proceed to checkout",
+  "brand": "Brand",
+  "qty": "Qty",
+  "noImage": "No image",
+  "product": "Product",
+  "remove": "Remove from cart"
+}

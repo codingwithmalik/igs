@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Orders from "@/components/Admin/Orders.jsx";
 import Products from "@/components/Admin/Products.jsx";
+import InboxSection from "@/components/Admin/InboxSection.jsx";
 import {
   Package,
   ShoppingCart,
@@ -11,22 +12,24 @@ import {
   Search,
   AlertCircle,
   BarChart3,
-  Settings,
   Bell,
   Menu,
   Inbox,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function AdminDashboard() {
-  const dispatch = useDispatch();
   const { t, i18n } = useTranslation("admin/home");
   const [activeTab, setActiveTab] = useState("dashboard");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Redux selectors
   const products = useSelector((state) => state.products.products);
   const orders = useSelector((state) => state.orders.orders);
+  const messages = useSelector((state) => state.messages.messages);
+
   const getStatusColor = (status) => {
     const colors = {
       pending: "bg-amber-500/20 text-amber-300 border border-amber-500/40",
@@ -41,34 +44,31 @@ export default function AdminDashboard() {
     return colors[status] || "bg-white/5 text-gray-200 border border-white/10";
   };
 
+  // Compute dynamic stats
+  const totalRevenue = orders.reduce(
+    (acc, order) => acc + order.totals.total,
+    0
+  );
+  const unreadMessages = messages.filter((m) => !m.read).length;
+
   const stats = [
     {
-      label: "Total Revenue",
-      value: "$12,486",
-      change: "+12.5%",
-      icon: DollarSign,
+      label: t("stats.totalRevenue"),
+      value: `${totalRevenue.toLocaleString()}`,
+      currency: "PKR",
       color: "sky",
     },
     {
-      label: "Orders",
-      value: "143",
-      change: "+8.2%",
+      label: t("stats.orders"),
+      value: orders.length,
       icon: ShoppingCart,
       color: "emerald",
     },
     {
-      label: "Products",
-      value: "287",
-      change: "+3.1%",
+      label: t("stats.products"),
+      value: products.length,
       icon: Package,
       color: "violet",
-    },
-    {
-      label: "Customers",
-      value: "1,249",
-      change: "+15.3%",
-      icon: Users,
-      color: "amber",
     },
   ];
 
@@ -79,45 +79,41 @@ export default function AdminDashboard() {
     amber: { iconBg: "bg-amber-500/10", iconText: "text-amber-300" },
   };
 
-  console.log();
   return (
     <div className="min-h-screen bg-linear-to-br from-[#171d1e] via-[#1b2426] to-[#0f1415] text-gray-100">
       {/* Header */}
       <header className="bg-[#0f1415]/80 border-b border-[#1f2a2d] backdrop-blur sticky top-0 md:z-100 z-40">
-        <div className="px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2 sm:space-x-4">
-              <button
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="lg:hidden p-2 hover:bg-white/5 rounded-lg border border-transparent hover:border-[#1f2a2d] transition-colors"
-              >
-                <Menu className="w-5 h-5 text-gray-300" />
-              </button>
-
-              <div>
-                <h1 className="text-lg sm:text-2xl font-bold text-white">
-                  {t("header.title")}
-                </h1>
-              </div>
+        <div className="px-4 sm:px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="lg:hidden p-2 hover:bg-white/5 rounded-lg border border-transparent hover:border-[#1f2a2d]"
+            >
+              <Menu className="w-5 h-5 text-gray-300" />
+            </button>
+            <h1 className="text-lg sm:text-2xl font-bold text-white">
+              {t("header.title")}
+            </h1>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="hidden md:flex items-center bg-[#0b0f10] border border-[#1f2a2d] rounded-lg px-4 py-2 shadow-inner shadow-black/30">
+              <Search
+                className={`w-5 h-5 text-gray-500 ${
+                  i18n.language === "en" ? "mr-2" : "ml-2"
+                }`}
+              />
+              <input
+                type="text"
+                placeholder={t("header.searchplaceholder")}
+                className="bg-transparent border-none outline-none text-sm w-48 lg:w-64 placeholder-gray-500 text-gray-100"
+              />
             </div>
-            <div className="flex items-center space-x-2 sm:space-x-4">
-              <div className="hidden md:flex items-center bg-[#0b0f10] border border-[#1f2a2d] rounded-lg px-4 py-2 shadow-inner shadow-black/30">
-                <Search
-                  className={`w-5 h-5 text-gray-500 ${
-                    i18n.language === "en" ? "mr-2" : "ml-2"
-                  }`}
-                />
-                <input
-                  type="text"
-                  placeholder={t("header.searchplaceholder")}
-                  className="bg-transparent border-none outline-none text-sm w-48 lg:w-64 placeholder-gray-500 text-gray-100"
-                />
-              </div>
-              <button className="relative p-2 hover:bg-white/5 rounded-lg border border-transparent hover:border-[#1f2a2d] transition-colors">
-                <Bell className="w-5 h-5 text-gray-300" />
+            <button className="relative p-2 hover:bg-white/5 rounded-lg border border-transparent hover:border-[#1f2a2d] transition-colors">
+              <Bell className="w-5 h-5 text-gray-300" />
+              {unreadMessages > 0 && (
                 <span className="absolute top-1 right-1 w-2 h-2 bg-emerald-500 rounded-full"></span>
-              </button>
-            </div>
+              )}
+            </button>
           </div>
         </div>
       </header>
@@ -144,27 +140,9 @@ export default function AdminDashboard() {
                 label: t("sidebar.dashboard"),
                 icon: BarChart3,
               },
-              {
-                id: "products",
-                label: t("sidebar.products"),
-                icon: Package,
-              },
-              {
-                id: "orders",
-                label: t("sidebar.orders"),
-                icon: ShoppingCart,
-              },
+              { id: "products", label: t("sidebar.products"), icon: Package },
+              { id: "orders", label: t("sidebar.orders"), icon: ShoppingCart },
               { id: "inbox", label: t("sidebar.inbox"), icon: Inbox },
-              {
-                id: "analytics",
-                label: t("sidebar.analytics"),
-                icon: TrendingUp,
-              },
-              {
-                id: "settings",
-                label: t("sidebar.settings"),
-                icon: Settings,
-              },
             ].map((item) => (
               <button
                 key={item.id}
@@ -188,17 +166,8 @@ export default function AdminDashboard() {
         {/* Main Content */}
         <main className="flex-1 p-4 sm:p-6 w-full min-w-0">
           {activeTab === "dashboard" && (
-            <div className="space-y-4 sm:space-y-6">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                <h2 className="text-2xl sm:text-3xl font-bold text-white">
-                  Dashboard
-                </h2>
-                <div className="text-xs sm:text-sm text-gray-400">
-                  Last updated: 2 mins ago
-                </div>
-              </div>
-
-              {/* Stats Grid */}
+            <div className="space-y-6">
+              {/* Stats */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 {stats.map((stat, idx) => (
                   <div
@@ -208,22 +177,28 @@ export default function AdminDashboard() {
                     <div className="flex items-center justify-between mb-3 sm:mb-4">
                       <div
                         className={`p-2 sm:p-3 rounded-lg ${
-                          statColors[stat.color]?.iconBg || "bg-emerald-500/10"
+                          statColors[stat.color]?.iconBg
                         }`}
                       >
-                        <stat.icon
-                          className={`w-5 h-5 sm:w-6 sm:h-6 ${
-                            statColors[stat.color]?.iconText ||
-                            "text-emerald-300"
-                          }`}
-                        />
+                        {stat.icon ? (
+                          <stat.icon
+                            className={`w-5 h-5 sm:w-6 sm:h-6 ${
+                              statColors[stat.color]?.iconText
+                            }`}
+                          />
+                        ) : (
+                          <div
+                            className={`w-5 h-5 sm:w-6 sm:h-6 ${
+                              statColors[stat.color]?.iconText
+                            }`}
+                          >
+                            {stat.currency}
+                          </div>
+                        )}
                       </div>
-                      <span className="text-emerald-300 text-xs sm:text-sm font-medium">
-                        {stat.change}
-                      </span>
-                    </div>
-                    <div className="text-xl sm:text-2xl font-bold text-white mb-1">
-                      {stat.value}
+                      <div className="text-xl sm:text-2xl font-bold text-white mb-1">
+                        {stat.value}
+                      </div>
                     </div>
                     <div className="text-xs sm:text-sm text-gray-400">
                       {stat.label}
@@ -232,7 +207,7 @@ export default function AdminDashboard() {
                 ))}
               </div>
 
-              {/* Recent Orders & Not Available Products */}
+              {/* Recent Orders & Products */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 <div className="bg-[#0f1415] rounded-xl p-4 sm:p-6 border border-[#1f2a2d] shadow-[0_10px_40px_rgba(0,0,0,0.35)]">
                   <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-white">
@@ -249,7 +224,7 @@ export default function AdminDashboard() {
                             {order.id}
                           </div>
                           <div className="text-xs sm:text-sm text-gray-400 truncate">
-                            {order.customer.name[i18n.language]}
+                            {order.customer.name}
                           </div>
                         </div>
                         <div className="text-right ml-2 shrink-0">
@@ -318,6 +293,8 @@ export default function AdminDashboard() {
           {activeTab === "orders" && (
             <Orders getStatusColor={getStatusColor} orders={orders} />
           )}
+
+          {activeTab === "inbox" && <InboxSection />}
         </main>
       </div>
     </div>

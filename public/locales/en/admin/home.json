@@ -17,6 +17,7 @@
     "addtitle": "Add Product",
     "nameen": "Name (English)",
     "nameur": "Name (Urdu)",
+    "selectcategory": "Select Category",
     "category": "Category",
     "categories": {
       "electronics": "Electronics",
@@ -53,8 +54,8 @@
       "actions": "Actions",
       "available": "Available",
       "unavailable": "Unavailable",
-      "edit":"Edit",
-      "delete":"Delete"
+      "edit": "Edit",
+      "delete": "Delete"
     },
     "description": {
       "label": "Description :"
@@ -62,8 +63,30 @@
     "units": {
       "kilogram": "/ kg",
       "item": "/ item"
-    }
-
+    },
+    "categories": {
+      "selectcategory": "Select Category",
+    "beverages": "Drinks & Beverages",
+    "snacksChips": "Snacks & Chips",
+    "sweetsCandies": "Sweets & Candies",
+    "riceGrains": "Rice & Grains",
+    "spicesSeasonings": "Spices & Seasonings",
+    "cookingOil": "Cooking Oil",
+    "cannedFoods": "Canned Foods",
+    "pastaNoodles": "Pasta & Noodles",
+    "teaCoffee": "Tea & Coffee",
+    "sugarSweeteners": "Sugar & Sweeteners",
+    "personalCare": "Personal Care",
+    "householdCleaning": "Household Cleaning",
+    "laundryDetergents": "Laundry Detergents",
+    "paperProducts": "Paper Products",
+    "babyCare": "Baby Care",
+    "healthWellness": "Health & Wellness",
+    "frozenFoods": "Frozen Foods",
+    "condimentsSauces": "Condiments & Sauces",
+    "breakfastCereals": "Breakfast Cereals",
+    "dryFruitsNuts": "Dry Fruits & Nuts"
+  }
   },
   "orders": {
     "orders": "Orders",
@@ -107,11 +130,11 @@
     "price": "Price",
 
     "paymentMethod": "Payment Method",
-        "paymentmethods":{
-      "cod":"Cash on delivery"
+    "paymentmethods": {
+      "cod": "Cash on delivery"
     },
     "deliveryPickup": "Delivery / Pickup",
-    "methods":{
+    "methods": {
       "pickup": "Take away",
       "delivery": "Home delivery"
     },
@@ -128,5 +151,20 @@
       "delivered": "Delivered",
       "cancelled": "Cancelled"
     }
+  },
+  "inbox": {
+    "title": "Inbox Messages",
+    "messages": "Messages",
+    "noMessages": "No messages yet",
+    "email": "Email",
+    "read": "Read",
+    "unread": "Unread",
+    "all": "All"
+  },
+  "stats": {
+    "totalRevenue": "Total Revenue",
+    "orders": "Orders",
+    "products": "Products",
+    "customers": "Customers"
   }
 }

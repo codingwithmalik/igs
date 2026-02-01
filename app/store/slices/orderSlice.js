@@ -8,23 +8,23 @@ const initialState = {
       status: "pending",
       createdAt: "2025-04-20T10:40:00Z",
       customer: {
-        name: { en: "John doe", ur: "جان ڈو" },
+        name: "John doe",
         phone: "03259884647",
-        address: { en: "Multan , pakistan", ur: "ملتان، پاکستان" },
+        address: "Multan , pakistan",
       },
       paymentMethod: "cod",
       method: "pickup",
       items: [
         {
           productId: 2,
-          name: {en:"Basmati Rice" , ur:"chawal"},
+          name: { en: "Basmati Rice", ur: "chawal" },
           quantity: 2,
           price: 200,
           imageURL: "/Images/Products/Covers/Grains/rice.avif",
         },
         {
           productId: 1,
-          name: {en:"Basmati Rice" , ur:"chawal"},
+          name: { en: "Basmati Rice", ur: "chawal" },
           quantity: 4,
           price: 200,
           imageURL: "/Images/Products/Covers/Grains/rice.avif",

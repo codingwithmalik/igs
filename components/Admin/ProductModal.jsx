@@ -7,30 +7,20 @@ import UploadImage from "./ImageUpload";
 function ProductModal({ product, onClose, onSave }) {
   const { t } = useTranslation("admin/home");
   const [uploading, setUploading] = useState(false);
-  const categoriesDict = {
-    electronics: { en: "Electronics", ur: "الیکٹرانکس" },
-    grains: { en: "Grains", ur: "اناج" },
-    fashion: { en: "Fashion", ur: "فیشن" },
-    homeappliances: { en: "Home Appliances", ur: "گھر کے برقی آلات" },
-    books: { en: "Books", ur: "کتابیں" },
-    toys: { en: "Toys", ur: "کھلونے" },
-  };
+  const categories = t("products.categories", { returnObjects: true });
+
   const [formData, setFormData] = useState(
     product
       ? {
           ...product,
-          category: Object.keys(categoriesDict).find(
-            (key) =>
-              categoriesDict[key].en === product.category.en &&
-              categoriesDict[key].ur === product.category.ur
-          ),
+          category: product.category, // ✅ already a key
         }
       : {
           id: "",
           name: { en: "", ur: "" },
           description: { en: "", ur: "" },
           price: 0,
-          category: "grains",
+          category: "selectcategory", // ✅ empty means not selected
           brand: { en: "Generic", ur: "جنرل" },
           isNumerical: true,
           isAvailable: true,
@@ -39,14 +29,10 @@ function ProductModal({ product, onClose, onSave }) {
   );
 
   const handleSubmit = () => {
-    const categoryKey = formData.category;
-
-    const finalData = {
-      ...formData,
-      category: categoriesDict[categoryKey], // replaces key with EN + UR
-    };
-    console.log("Submitting Product Data:", finalData);
-    onSave(finalData);
+    if (!formData.category) return;
+    console.log(formData);
+    
+    onSave(formData);
   };
 
   return (
@@ -166,24 +152,15 @@ function ProductModal({ product, onClose, onSave }) {
               onChange={(e) =>
                 setFormData({ ...formData, category: e.target.value })
               }
-              className="w-full px-4 py-2 border border-[#1f2a2d] bg-[#0b0f10] text-gray-100 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-[#1f2a2d] bg-[#0b0f10] text-gray-100 rounded-lg"
             >
-              <option value="electronics">
-                {t("productmodal.categories.electronics")}
-              </option>
-              <option value="grains">
-                {t("productmodal.categories.grains")}
-              </option>
-              <option value="fashion">
-                {t("productmodal.categories.fashion")}
-              </option>
-              <option value="homeappliances">
-                {t("productmodal.categories.homeappliances")}
-              </option>
-              <option value="books">
-                {t("productmodal.categories.books")}
-              </option>
-              <option value="toys">{t("productmodal.categories.toys")}</option>
+              {Object.entries(categories)
+                .filter(([key]) => key !== "select")
+                .map(([key, label]) => (
+                  <option key={key} value={key}>
+                    {label}
+                  </option>
+                ))}
             </select>
           </div>
 

@@ -25,6 +25,7 @@ i18next
       "footer",
       "products/searcher",
       "products/products",
+      "cart",
       "admin/login",
       "admin/home",
     ], // all pages

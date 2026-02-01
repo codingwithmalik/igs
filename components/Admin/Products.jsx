@@ -161,7 +161,9 @@ const Products = ({ products, getStatusColor }) => {
                                 />
                               </span>
                               <div
-                                className={isRTL ? "text-right mr-3" : "text-left"}
+                                className={
+                                  isRTL ? "text-right mr-3" : "text-left"
+                                }
                               >
                                 <span className="font-medium text-white text-base block">
                                   {product.name[i18n.language]}
@@ -174,7 +176,7 @@ const Products = ({ products, getStatusColor }) => {
                               isRTL ? "text-right" : "text-left"
                             }`}
                           >
-                            {product.category[i18n.language]}
+                            {t(`products.categories.${product.category}`)}{" "}
                           </td>
                           <td
                             className={`px-6 py-4 font-medium text-white text-base ${
@@ -375,7 +377,7 @@ const Products = ({ products, getStatusColor }) => {
                               isRTL ? "text-right" : "text-left"
                             }`}
                           >
-                            {product.category[i18n.language]}
+                            {t(`products.categories.${product.category}`)}{" "}
                           </td>
                           <td
                             className={`px-4 py-3 font-medium text-white text-sm ${
@@ -491,7 +493,7 @@ const Products = ({ products, getStatusColor }) => {
                         {product.name[i18n.language]}
                       </h3>
                       <p className="text-sm text-gray-400">
-                        {product.category[i18n.language]}
+                        {t(`products.categories.${product.category}`)}{" "}
                       </p>
                       <p className="text-xs text-gray-500 mt-1">
                         {product.brand[i18n.language]}

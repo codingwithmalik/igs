@@ -81,7 +81,7 @@ const OrderModal = ({ order, onClose }) => {
                 <span className="font-semibold text-gray-400">
                   {t("ordermodal.name")}:
                 </span>
-                {order.customer.name[i18n.language]}
+                {order.customer.name}
               </p>
               <p>
                 <span className="font-semibold text-gray-400">
@@ -93,7 +93,7 @@ const OrderModal = ({ order, onClose }) => {
                 <span className="font-semibold text-gray-400">
                   {t("ordermodal.address")}:
                 </span>
-                {order.customer.address[i18n.language]}
+                {order.customer.address}
               </p>
             </div>
           </div>

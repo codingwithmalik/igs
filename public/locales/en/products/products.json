@@ -1,5 +1,6 @@
 {
   "categories": {
+    "all": "All",
     "beverages": "Drinks & Beverages",
     "snacksChips": "Snacks & Chips",
     "sweetsCandies": "Sweets & Candies",
@@ -18,8 +19,20 @@
     "healthWellness": "Health & Wellness",
     "frozenFoods": "Frozen Foods",
     "condimentsSauces": "Condiments & Sauces",
-    "breakfastCereals": "Breakfast Cereals",
-    "dryFruitsNuts": "Dry Fruits & Nuts"
-  }
+    "breakfastCereals": "Breakfast Cereals"
+  },
+  "addToCart": "Add to Cart",
+  "selectUnit": "Select Unit",
+  "gram": "g",
+  "kilogram": "kg",
+  "pricePerPiece": "Price per piece",
+  "pricePerGram": "Price per gram",
+  "pricePerKg": "Price per kg",
+  "total": "Total",
+  "pieces": "pieces",
+  "outOfStock": "Out of Stock",
+  "noProducts": "No products found",
+  "enterAmount": "Enter Amount",
+  "enterValidAmount": "Please enter a valid amount"
 }
 

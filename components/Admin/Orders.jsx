@@ -40,7 +40,9 @@ const Orders = ({ getStatusColor, orders }) => {
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">
             {t("orders.orders")}
           </h2>
-          <div className="flex items-center space-x-3 px-3 sm:px-4 py-2 border border-[#1f2a2d] rounded-lg bg-[#0f1415]">
+          <div
+            className={`flex items-center space-x-3 px-3 sm:px-4 py-2 border border-[#1f2a2d] rounded-lg bg-[#0f1415] `}
+          >
             <select
               className="w-full sm:w-auto px-2 text-sm sm:text-base border-none focus:outline-none rounded-lg bg-[#0f1415] text-gray-100"
               value={statusFilter}
@@ -105,7 +107,7 @@ const Orders = ({ getStatusColor, orders }) => {
                         </td>
                         <td className="px-6 py-4">
                           <div className="text-white text-base">
-                            {order.customer.name[i18n.language]}
+                            {order.customer.name}
                           </div>
                         </td>
                         <td className="px-6 py-4 text-gray-400">
@@ -197,7 +199,7 @@ const Orders = ({ getStatusColor, orders }) => {
                         {order.id}
                       </div>
                       <div className="text-white text-base font-medium">
-                        {order.customer.name[i18n.language]}
+                        {order.customer.name}
                       </div>
                     </div>
                     <div className="flex gap-2">
