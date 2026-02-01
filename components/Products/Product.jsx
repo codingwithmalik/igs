@@ -247,7 +247,7 @@ const Product = ({ product }) => {
               <button
                 onClick={handleDecrease}
                 disabled={quantity <= 1}
-                className="min-h-[44px] min-w-[44px] rounded-lg bg-[#1a2324] p-2 text-[#2ecb5d] transition-all duration-200 hover:bg-[#468759] hover:text-white disabled:cursor-not-allowed disabled:opacity-50 sm:min-h-0 sm:min-w-0"
+                className="min-h-11 min-w-11 rounded-lg bg-[#1a2324] p-2 text-[#2ecb5d] transition-all duration-200 hover:bg-[#468759] hover:text-white disabled:cursor-not-allowed disabled:opacity-50 sm:min-h-0 sm:min-w-0"
                 aria-label="Decrease quantity"
               >
                 <Minus className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -264,7 +264,7 @@ const Product = ({ product }) => {
               />
               <button
                 onClick={handleIncrease}
-                className="min-h-[44px] min-w-[44px] rounded-lg bg-[#1a2324] p-2 text-[#2ecb5d] transition-all duration-200 hover:bg-[#468759] hover:text-white sm:min-h-0 sm:min-w-0"
+                className="min-h-11 min-w-11 rounded-lg bg-[#1a2324] p-2 text-[#2ecb5d] transition-all duration-200 hover:bg-[#468759] hover:text-white sm:min-h-0 sm:min-w-0"
                 aria-label="Increase quantity"
               >
                 <Plus className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -276,7 +276,7 @@ const Product = ({ product }) => {
             {/* Add to Cart Button - touch-friendly */}
             <button
               onClick={handleAddToCart}
-              className="flex w-full min-h-[44px] items-center justify-center gap-2 rounded-lg bg-linear-to-r from-[#2ecb5d] to-[#0dd045] py-3 font-semibold text-[#171d1e] shadow-lg shadow-[#2ecb5d]/30 transition-all duration-300 hover:from-[#0dd045] hover:to-[#2ecb5d] hover:shadow-xl hover:shadow-[#2ecb5d]/50 active:scale-[0.98] sm:min-h-0 sm:py-3.5 sm:hover:scale-[1.02]"
+              className="flex w-full min-h-11ms-center justify-center gap-2 rounded-lg bg-linear-to-r from-[#2ecb5d] to-[#0dd045] py-3 font-semibold text-[#171d1e] shadow-lg shadow-[#2ecb5d]/30 transition-all duration-300 hover:from-[#0dd045] hover:to-[#2ecb5d] hover:shadow-xl hover:shadow-[#2ecb5d]/50 active:scale-[0.98] sm:min-h-0 sm:py-3.5 sm:hover:scale-[1.02]"
             >
               <ShoppingCart className="h-5 w-5 shrink-0" />
               <span className="text-sm sm:text-base">
@@ -298,7 +298,7 @@ const Product = ({ product }) => {
                     setSelectedUnit("kilogram");
                     if (!amount || amount <= 0) setAmount(1);
                   }}
-                  className={`min-h-[44px] rounded-lg px-2 py-2.5 font-medium transition-all duration-200 sm:min-h-0 sm:px-4 sm:py-3 sm:text-base ${
+                  className={`min-h-11 rounded-lg px-2 py-2.5 font-medium transition-all duration-200 sm:min-h-0 sm:px-4 sm:py-3 sm:text-base ${
                     selectedUnit === "kilogram"
                       ? "bg-[#2ecb5d] text-[#171d1e] shadow-lg shadow-[#2ecb5d]/30"
                       : "border border-[#468759]/20 bg-[#1a2324] text-sm text-gray-300 hover:bg-[#3a4546]"
@@ -311,7 +311,7 @@ const Product = ({ product }) => {
                     setSelectedUnit("gram");
                     if (!amount || amount <= 0) setAmount(1);
                   }}
-                  className={`min-h-[44px] rounded-lg px-2 py-2.5 font-medium transition-all duration-200 sm:min-h-0 sm:px-4 sm:py-3 sm:text-base ${
+                  className={`min-h-11nded-lg px-2 py-2.5 font-medium transition-all duration-200 sm:min-h-0 sm:px-4 sm:py-3 sm:text-base ${
                     selectedUnit === "gram"
                       ? "bg-[#2ecb5d] text-[#171d1e] shadow-lg shadow-[#2ecb5d]/30"
                       : "border border-[#468759]/20 bg-[#1a2324] text-sm text-gray-300 hover:bg-[#3a4546]"
@@ -337,7 +337,7 @@ const Product = ({ product }) => {
                       step={selectedUnit === "kilogram" ? "0.1" : "1"}
                       value={amount}
                       onChange={handleAmountChange}
-                      className="min-h-[44px] w-full rounded-lg border border-[#468759]/30 bg-[#1a2324] px-3 py-2 text-sm text-white transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#2ecb5d] sm:min-h-0 sm:px-4 sm:py-2.5 sm:text-base"
+                      className="min-h-11 w-full rounded-lg border border-[#468759]/30 bg-[#1a2324] px-3 py-2 text-sm text-white transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#2ecb5d] sm:min-h-0 sm:px-4 sm:py-2.5 sm:text-base"
                       placeholder="0"
                     />
                     <span className="shrink-0 text-sm font-medium text-gray-300 sm:text-base">
@@ -364,7 +364,7 @@ const Product = ({ product }) => {
             <button
               onClick={handleAddToCart}
               disabled={!amount || amount <= 0}
-              className="flex min-h-[44px] w-full items-center justify-center gap-2 rounded-lg bg-linear-to-r from-[#2ecb5d] to-[#0dd045] py-3 font-semibold text-[#171d1e] shadow-lg shadow-[#2ecb5d]/30 transition-all duration-300 hover:from-[#0dd045] hover:to-[#2ecb5d] hover:shadow-xl hover:shadow-[#2ecb5d]/50 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:transform-none sm:min-h-0 sm:py-3.5 sm:hover:scale-[1.02]"
+              className="flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-linear-to-r from-[#2ecb5d] to-[#0dd045] py-3 font-semibold text-[#171d1e] shadow-lg shadow-[#2ecb5d]/30 transition-all duration-300 hover:from-[#0dd045] hover:to-[#2ecb5d] hover:shadow-xl hover:shadow-[#2ecb5d]/50 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:transform-none sm:min-h-0 sm:py-3.5 sm:hover:scale-[1.02]"
             >
               <ShoppingCart className="h-5 w-5 shrink-0" />
               <span className="text-sm sm:text-base">

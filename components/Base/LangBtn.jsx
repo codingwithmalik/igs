@@ -11,8 +11,9 @@ const LangBtn = () => {
     i18next.changeLanguage(language);    
   };
   useEffect(() => {
+    if (!i18n.language ||!i18n ) return; 
     document.body.dir = i18n.dir()
-  }, [i18n.language]);
+  }, [i18n, i18n.language]);
   const [show, setShow] = useState(false);
   const toggleshow = () => {
     setTimeout(() => {

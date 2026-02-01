@@ -4,10 +4,11 @@
 import React from "react";
 import { X, Trash2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Image from "next/image";
 
 const OrderModal = ({ order, onClose }) => {
-  if (!order) return null;
   const { t, i18n } = useTranslation("admin/home");
+  if (!order) return null;
 
   return (
     <div className="fixed inset-0 z-101 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 sm:p-6">
@@ -110,7 +111,7 @@ const OrderModal = ({ order, onClose }) => {
                   className="flex justify-between items-center bg-[#171d1e] rounded-lg p-3 hover:bg-white/5 transition-colors"
                 >
                   <div className="flex items-center space-x-3">
-                    <img
+                    <Image
                       src={item.imageURL}
                       alt={item.name[i18n.language]}
                       className="w-14 h-14 object-cover rounded-lg"

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import UploadImage from "./ImageUpload";
+import Image from "next/image";
 
 function ProductModal({ product, onClose, onSave }) {
   const { t } = useTranslation("admin/home");
@@ -215,11 +216,13 @@ function ProductModal({ product, onClose, onSave }) {
               }
             />
             {formData.imageURL && (
-              <img
+              <Image
                 src={formData.imageURL}
+                alt="Product Image"
                 className="w-24 h-24 object-cover rounded-lg mt-2 justify-center"
               />
             )}
+            
           </div>
 
           {/* IS AVAILABLE */}

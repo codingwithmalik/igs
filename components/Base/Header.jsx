@@ -1,19 +1,17 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { FaPhoneAlt ,FaUser,FaListAlt,FaHome } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
 import { IoMenu } from "react-icons/io5";
+import { AiFillProduct } from "react-icons/ai";
 import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
-import { FaHome } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import gsap from "gsap";
 import LangBtn from "./LangBtn";
-import { FaPhoneAlt } from "react-icons/fa";
-import { AiFillProduct } from "react-icons/ai";
-import { FaUser } from "react-icons/fa";
-import { FaListAlt } from "react-icons/fa";
 const Header = () => {
   const { t } = useTranslation("header");
   const cartCount = useSelector((state) => state.cart.items.length);
@@ -26,6 +24,7 @@ const Header = () => {
 
   // Close navbar when clicking outside
   useEffect(() => {
+    if (!isOpen) return;
     const handleClickOutside = (event) => {
       if (isOpen && navRef.current && menuRef.current) {
         // Check if click is outside both navbar and menu button
@@ -147,7 +146,7 @@ const Header = () => {
                 href="/"
                 className="PM text-2xl sm:text-3xl md:text-4xl lg:text-5xl flex justify-center items-center space-x-1 sm:space-x-2"
               >
-                <img
+                <Image
                   src="../logo.png"
                   alt="Logo"
                   className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
