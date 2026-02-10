@@ -6,9 +6,6 @@ import InboxSection from "@/components/Admin/InboxSection.jsx";
 import {
   Package,
   ShoppingCart,
-  DollarSign,
-  Users,
-  TrendingUp,
   Search,
   AlertCircle,
   BarChart3,
@@ -21,7 +18,8 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 
 export default function AdminDashboard() {
-  const { t, i18n } = useTranslation("admin/home");
+  const { t } = useTranslation("admin/home");
+  const {i18n} = useTranslation();
   const [activeTab, setActiveTab] = useState("dashboard");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 

@@ -18,7 +18,10 @@ export default function Home() {
   const servicesRef = useRef(null);
 
   useGSAP(
+    
     () => {
+      if (typeof window === "undefined") return; // skip server-side rendering
+      if (!heroRef.current) return;
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.from(".hero-title", {
@@ -61,6 +64,8 @@ export default function Home() {
   // Services section staggered animations with ScrollTrigger
   useGSAP(
     () => {
+      if (typeof window === "undefined") return; // skip server
+      if (!servicesRef.current) return;
       // Set initial states for service cards
       gsap.set(".service-card", {
         opacity: 0,
@@ -160,7 +165,7 @@ export default function Home() {
             <div className="hero-buttons flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
               <Link
                 href="/products"
-                className="group relative px-8 sm:px-10 py-3 sm:py-4 bg-[#468759] hover:bg-[#3a6f48] text-white font-semibold text-base sm:text-lg md:text-xl rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[#468759]/50 flex items-center justify-center gap-2 min-w-[160px] sm:min-w-[180px]"
+                className="group relative px-8 sm:px-10 py-3 sm:py-4 bg-[#468759] hover:bg-[#3a6f48] text-white font-semibold text-base sm:text-lg md:text-xl rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-[#468759]/50 flex items-center justify-center gap-2 min-w-40 sm:min-w-[180px]"
               >
                 <span>{t("shopNow")}</span>
                 <svg

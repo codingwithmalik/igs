@@ -24,6 +24,7 @@ const Header = () => {
 
   // Close navbar when clicking outside
   useEffect(() => {
+    
     if (!isOpen) return;
     const handleClickOutside = (event) => {
       if (isOpen && navRef.current && menuRef.current) {
@@ -147,8 +148,10 @@ const Header = () => {
                 className="PM text-2xl sm:text-3xl md:text-4xl lg:text-5xl flex justify-center items-center space-x-1 sm:space-x-2"
               >
                 <Image
-                  src="../logo.png"
+                  src="/logo.png"
                   alt="Logo"
+                  width={4800}
+                  height={4800}
                   className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
                 />
                 <span>IGS</span>
